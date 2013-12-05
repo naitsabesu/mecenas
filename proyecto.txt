@@ -1,0 +1,120 @@
+Introduccion
+
+
+
+A nivel local
+Falta de apoyo estatal a los emprendimientos
+Contexto actual de la Argentina
+
+A nivel personal
+La busqueda de la libertad financiera entendida como el no tener la necesidad de depender economicamente de un tercero.
+
+Oportunidad
+Crecimiento de la cultura emprendedora a nivel latinoamericano
+
+Marketing
+Publicidad internet (facebook y google)
+Exposicion en conferencias
+Afiches en universidades y escuelas de diseño
+
+Modelo de negocio
+El negocio principal del proyecto esta basado en el modelo de crowdfunding. Segun wikipedia pueden encontrase varias acepciones sobre este modelo; "Financiacion en masa", "Financiacion colectiva", "Microfinanciacion colectiva", "Micromecenazgo", etc. 
+Puede describirse el crowdfunding como la realizacion de un proyecto productivo por parte de una o varias personas, quienes consiguen recursos monetarios o colaborativos a traves de una red formada para tal fin.
+El crowdfunding tiene sus bases en los donativos y cobro mayor impulso con el uso de internet, el ejemplo paradigmatico de esto es el sitio americano de crowdfunding kickstarter.com, donde se financian proyectos de toda indole llegando en ciertos casos a recaudar hasta el 1000% del capital requerido.
+Ademas variedad de proyectos es muy amplia y puede verse financiarse desde emprendimientos musicales como la edicion/publicacion de un disco, emprendimientos informaticos como el desarrollo de videojuegos, tecnologicos como la produccion de una impresora 3D, sociales como la financiacion de campañas de partidos politicos, y un largo etcétera.
+
+
+Financiacion
+
+Everything on Kickstarter must be a project.
+
+A project is something with a clear end, like making an album, a film, or a new game. A project will eventually be completed, and something will be produced as a result.
+
+Every project on Kickstarter must fit into one of our categories.
+
+Our categories are Art, Comics, Dance, Design, Fashion, Film, Food, Games, Music, Photography, Publishing, Technology, and Theater.
+
+Are those the only guidelines?
+
+Those are the main two, but read on for specific uses of Kickstarter that are not allowed, and note that Hardware and Product Design projects have additional guidelines below. We don't curate projects based on taste. Instead, we do a quick check to make sure they meet these guidelines.
+
+Who can create a project on Kickstarter?
+
+Creating projects is currently open to creators over the age of 18 and based in the US, the UK, Canada, Australia, and New Zealand (see full details). Businesses, nonprofits, and other organizations can also use Kickstarter to fund their creative projects.
+
+What is not allowed?
+
+Kickstarter cannot be used to raise money for causes, whether it's the Red Cross or a scholarship, or for "fund my life" projects, like tuition or bills.
+
+Kickstarter cannot be used to sell equity or solicit loans.
+
+Projects cannot resell items or offer rewards not produced by the project or its creator.
+
+Creators cannot promise to donate a portion of funds raised or future revenue to a cause.
+
+Projects cannot offer rewards in bulk quantities (more than 10).
+
+Kickstarter cannot be used to fund websites or apps focused on e-commerce, business, and social networking.
+
+Kickstarter cannot be used to fund software projects not run by the developers themselves.
+
+Kickstarter cannot be used to buy real estate.
+
+Projects cannot offer alcohol as a reward.
+
+Projects cannot offer genetically modified organisms as a reward.
+
+No self-help material (books, videos, etc). This includes projects that offer (or produce materials that offer) business, emotional, financial, health, medical, sex/seduction, or other self-help advice.
+
+No offensive material (hate speech, etc.); pornographic material; or projects endorsing or opposing a political candidate.
+
+No tobacco, drugs, and drug paraphernalia; energy food and drinks; or nutritional supplements.
+
+No contests, raffles, coupons, or lifetime memberships.
+
+No bath, beauty, and cosmetic products; electronic surveillance equipment; eyewear (sunglasses, prescription glasses, and others); firearms, weapons, knives, weapon accessories, and replicas of weapons; medical, health, safety, and personal care products; or infomercial-type products.
+
+Hardware and Product Design guidelines
+
+Show your work
+
+Projects must be clear about their state of development, and cannot be presented as preorders of finished products. Projects must show details (photos, videos, sketches) of their progress so far, along with a prototype demonstrating the product's current functionality. Projects must explain how the final design is likely to differ from the prototype, and include a production plan (i.e., how you're going to make it) and an estimated timeline.
+
+No product simulations or photorealistic renderings
+
+Technical drawings, CAD designs, sketches, and other parts of the design process are awesome and encouraged. Photorealistic renderings and simulations that could be mistaken for finished products or real events, however, are not allowed.
+
+Single servings
+
+Product Design and Hardware projects can only offer one reward per pledge. Offering multiple quantities can imply that rewards are shrink-wrapped and ready to ship when they’re not. With some projects, we'll make exceptions for what we consider sensible sets — things like salt and pepper shakers, notebooks, building blocks, etc.
+
+About these guidelines
+
+Kickstarter’s mission is to help bring creative projects to life. Since launching in April 2009, we’ve adjusted these guidelines several times — to add more of them to fit new uses, or to simplify them as we learn (and after seeing 100,000+ projects, we’ve learned a ton). The guidelines are never perfect, but we care deeply about trying to get them right. We aim to be as open as possible while protecting the health and creative spirit of Kickstarter for the long term. Thanks for reading.
+
+View the Community Guidelines for our policy on online etiquette for project creators and backers.
+
+
+
+
+------------------
+
+
+Proyectos
+Todos los proyectos deberán poseer obligatoriamente las siguientes características: 
+-	Monto a solicitar.
+-	Tipo de recaudación. (Vamos por todo / con esto me arreglo)
+-	Según el tipo de recaudación deberan fijarse los objetivos, es decir que se hará con el dinero solicitado. 
+-	Plazo de recaudación.
+-	Video de presentacion.
+-	Carta de presentacion de los encargados del proyecto.
+-	Resumen del proyecto. 
+-	Documentacion extra.
+-	Recompensas
+
+- entrar dentro de las categorías posibles (*)
+- no deben afectar la moral de las personas en temas de política, religión y/o sexualidad (*)
+- definido para que se utilizará el dinero solicitado
+- aportar a construir un mundo mejor
+
+Análisis de los principales posibles competidores

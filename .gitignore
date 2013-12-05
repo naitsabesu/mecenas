@@ -1,0 +1,6 @@
+*.doc
+*.zip
+*.rdb
+
+node_modules/
+data/

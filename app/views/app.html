@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+	<h2>Bienvenido {{user.username}}</h2>
+	<a href="/log-out">logout</a>
+
+	<form method="post" action="/app/create-project">
+		<legend>Nuevo proyecto</legend>
+		<label for="title">Titulo</label>
+		<input type="text" name="title" id="title" placeholder="Titulo">
+		<label for="brief">Resumen</label>
+		<input type="text" name="brief" id="brief" placeholder="Resumen en 140 caracteres...">
+		<label for="pledge">Monto a recaudar</label>
+		<input type="text" name="pledge" id="pledge" placeholder="$" />
+		<label for="pledge">Desarrolla tu proyecto</label>
+		<textarea class="ckeditor" cols="40" id="content" name="content" rows="10"></textarea>
+		<br>
+		<button class="btn btn-primary" type="submit">Guardar</button>		
+	</form>
+
+
+	<script type="text/javascript" src="/js/plugins/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+{% endblock %}
