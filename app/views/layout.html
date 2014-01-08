@@ -1,38 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>{% block title %}Layout{% endblock %} </title>
 	{% block head %}
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="/css/crowd_base.css">
+
+    <!-- SCRIPTS -->
+    <script src="js/vendor/jquery-2.0.3.min.js"></script>	
 	{% endblock %}
 </head>
 <body>
-	<div class="container">
-		<!-- barra superior -->
-		<div class="row-fluid">
-			<div class="span12">
-				<div class="navbar navbar-fixed-top navbar-inverse">
-					<div class="navbar-inner">
-						<div class="container">
-							<a href="/" class="brand">Mecenas</a>
-							<a href="#">Que hacemos?</a>
-							<ul class="nav pull-right">
-								<li><a href="/app">Inicia<br>tu proyecto</a></li>
-								<li><a href="#">Explora<br>lo mas nuevo</a></li>
-								<li><a href="#">Blog</a></li>
-								<li class="divider-vertical"></li>
-								<li><a href="#">Entrar</a></li>
-							</ul>
-						</div>
-					</div>				
-				</div>
-			</div>
-		</div>	
-		{% block content %}
-		{% endblock %}
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.js"></script>
+	<!-- barra superior -->
+	<div id="navigation">
+		<div id="navigation-inner">
+			<a href="/" id="logo" class="brand">
+				<img src="/img/logo_99x54.png">
+			</a>
+			<ul id="navigation-menu">
+				<li><a href="/project/new">Inicia</a></li>
+				<li><a href="#">Explora</a></li>
+				<li><a href="#">Blog</a></li>
+				{% if user.fullname %} 
+					<li id="user-info">
+						<span class="label label-info">
+							<a href="/user" alt="{{ user.fullname }}">{{ user.fullname }}</a>
+						</span>
+						<br>
+						<a href="/entrance/logout">Salir</a>
+					</li>
+				{% else %}
+					<li id="user-info"><a href="/entrance">Entrar</a></li>
+				{% endif %}
+			</ul>
+		</div>
 	</div>
+	<!-- barra superior -->
+
+	<!-- MENSAJES -->
+	<!--
+	<div class="alert {{ msg_type }}">
+  		<button type="button" class="close" data-dismiss="alert">&times;</button>
+  		<strong>{{ msg_title }}</strong> {{ msg }}
+	</div>
+	 -->
+
+	{% block content %}
+	{% endblock %}
+
 </body>
 </html>

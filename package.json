@@ -9,6 +9,9 @@
     "connect-redis": "~1.4.5",
     "passport": "~0.1.17",
     "passport-twitter": "~1.0.2",
-    "mongoose": "~3.8.0"
+    "mongoose": "~3.8.0",
+    "node-uuid": "~1.4.1",
+    "password-hash": "~1.2.1",
+    "consolidate": "~0.10.0"
   }
 }

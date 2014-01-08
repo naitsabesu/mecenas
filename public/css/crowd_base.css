@@ -1,0 +1,284 @@
+body
+{
+	font-family: 'Voces', cursive;
+	color: #000;
+	font-size: 14px;
+}
+p
+{
+	color: #272822;
+}
+a .user
+{
+	color:white;
+}
+.alert
+{
+	position: absolute;
+	left: 250px;
+	top: 150px;
+	width:400px;
+	z-index: 100;
+}
+/* BARRA DE NAVEGACION */
+#navigation
+{
+	background-color: #272822;
+	border: none;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+	display: block;
+	height: 65px;
+	margin: 0px;
+	left: 0px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 1000;
+}
+#navigation-inner
+{
+	display: block;
+	border: none;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 10px;
+	width: 900px;
+}
+#navigation-inner #logo
+{
+	border: none;
+	display: inline-block;
+	float: left;
+	padding: 0px 40px;
+	height: 82%;
+}
+#navigation-menu
+{
+	border: none;
+	display: inline-block;
+	list-style: none;
+	margin-left: 300px;
+	font-size: 16px;
+}
+#navigation-menu li
+{
+	/*border: 1px solid black;*/
+	display: inline;
+	float: left;
+	padding: 0px 20px;
+	text-align: center;
+}
+#navigation-menu li#user-info 
+{
+	padding: 0px 25px; important!
+}
+#navigation-menu li>a, #navigation-menu li>span>a
+{
+	color: #ccc;
+	font-size: 16px;
+	font-weight: normal;
+}
+#navigation-menu li>a:hover, #navigation-menu li>span>a:hover
+{
+	color: #fff;
+	font-size: 16px;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#project-container
+{
+	display: none;
+	margin: 1em auto;
+	padding: 0px;
+	position: relative;
+	width: 900px;	
+}
+
+/* HOME */
+#home-container
+{
+	margin: 1em auto;
+	padding: 0px;
+	/*border: 1px dashed #CCC;*/
+	position: relative;
+	width: 900px;
+}
+.project-box
+{
+	border: 1px solid #CCC;
+	border-radius: 2px;
+	display: inline-block;
+	height: 425px;
+	margin: 5px 2px 0px 2px;
+	position: relative;
+	vertical-align: top;
+	width: 280px;
+}
+.project-box-item
+{
+	display: block;
+	position: relative;
+}
+.project-box .project-box-header
+{
+	height: 345px;
+}
+.project-box-header-img{}
+.project-box .project-box-header .project-box-title h4
+{
+	cursor: pointer;
+	display: inline-block;
+	padding: 0px 5px;	
+}
+.project-box .project-box-header .project-box-user p
+{
+	display: inline;
+	font-size: 0.8em;
+	padding: 0px 5px;
+	position: relative;
+	top: -10px;
+}
+.project-box .project-box-header .project-box-brief p
+{
+	padding: 0px 5px;
+}
+.project-box .project-box-actions
+{
+	text-align: center;
+	margin-bottom: 5px;
+}
+.project-box .project-box-actions button
+{
+	width: 95%;
+}
+.project-box .project-box-numbers
+{	
+/*	border: 1px dashed #CCC;*/	
+	text-align: center;
+	position: relative;
+	width: 100%;
+}
+.project-box .project-box-numbers .project-box-section
+{
+	border: 0px solid #CCC;	
+	display: inline-block;
+	height: 55px;
+	font-size: 0.7em;
+	padding-left: 23px;
+	text-align: left;
+	vertical-align: top;
+	width: 65px;
+}
+.project-box .project-box-numbers .project-box-section .project-box-section-title
+{
+	font-weight: bold;
+}
+
+.content
+{
+	position: relative;
+	top: 80px;
+	width: 950px;
+	margin: 0 auto;
+}
+
+/* ENTRANCE */
+.entrance-content{}
+
+.entrance-content .entrance-box
+{
+	/*border: 1px dashed #f00;*/
+	display: inline-block;
+	padding: 0 0px 0 10px;
+	position: relative;
+	vertical-align: top;
+	width:250px;
+}
+.entrance-content .entrance-box ol
+{
+	list-style-type: none;
+   	margin: 0;
+   	padding: 0;
+}
+.entrance-content .entrance-box .checkbox
+{
+	display: inline;
+}
+.entrance-content .entrance-box .remember-me
+{
+	display: inline;
+	vertical-align: bottom;
+}
+.entrance-box-primary
+{
+	margin-left: 80px;
+}
+.entrance-box-secondary
+{
+	margin-left: 80px;
+}
+
+/* CARGA DE PROYECTOS */
+.project-content 
+{
+	display: block;
+}
+
+.project-content ol
+{
+	list-style-type: none;
+   	margin: 0;
+   	padding: 0;
+}
+.project-content ol>li
+{
+	list-style-type: none;
+   	margin: 0;
+   	padding: 5px 0px 0px 0px;
+}
+
+/*
+#project-container
+{
+	margin: 0px;
+	position: relative;
+}
+.container-main
+{
+	margin-top: 50px;
+	padding: 3em;
+}
+
+.img-main
+{
+	width:100%;
+}
+.img-home
+{
+	position:relative;
+}
+.signup-div-color
+{
+	background-color: #ddd;
+}
+*/
+
+.btn-geckoboard {
+	background: #7EB348;
+	background-image: none;
+	border:none;
+	color: #fff;
+	letter-spacing: 1px;
+	font-weight: 600;
+	text-decoration: none ! important;
+	text-shadow: none;
+	text-transform: uppercase;
+	transition: all 0.3s ease-in-out 0s;		
+	-webkit-transition: all 0.3s ease-in-out 0s;		
+}
+.btn-geckoboard:hover {
+	background: #333;
+	color: #fff;
+}

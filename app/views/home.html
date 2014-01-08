@@ -1,51 +1,134 @@
 {% extends 'layout.html' %}
 {% block content %}
-	<div class="hero-unit">
-		<img src="img/test/img4-ancha.jpg" style="border:5px solid #CCC;">
-	</div>
 	<!-- lista de proyectos -->
-	<div class="row-fluid">
-		<div class="span10">
-			<ul>
-			{% for project in projects %}
-				<li class="span4" style="border:1px solid #CCC;">
-					<div class="pull-right">
-						<span><i class="icon-map-marker"></i></span>
-						<span><i class="icon-refresh"></i></span>
-					</div>	
-					<div>
-						<a href="#">
-							<img class="img-polaroid" src="img/test/img1.jpg"  >
-						</a>
-					</div>
-					<div>
-						<h4>{{project.title}}</h4>							
-					</div>				
-					<div>
-						<p>{{project.brief}}</p>
-					</div>
-					<div class="row-fluid">
-						<div class="span8">
-							<span>
-								<p>AR$ 0.- de AR$ {{project.pledge}}.-</p>
-							</span>
-							<span>
-								<p>recaudado</p>
-							</span>
-						</div>
-						<div class="span4">
-							<span>
-								<p>60 dias</p>
-							</span>
-							<span>
-								<p>para finalizar</p>
-							</span>
-						</div>
-					</div>
-				</li>
-			{% endfor %}
-			</ul>
+	<div id="home-container" class="content">
+		<div id="main-image">
+			<div style="width:100%;margin:0 auto;">
+				<img src="img/test/img4-ancha.gif" style="width:100%">
+			</div>
 		</div>
-		<div class="span2">&nbsp;</div>
+
+		<div style="width:900px;margin:0 auto;">
+			<div style="">
+				<h4>Ultimos proyectos</h4>
+			</div>
+		</div>				
 	</div>
+	<div id="project-container"></div>
+
+	<!-- TEMPLATES -->
+	<script id="project-item-min" type="text/template">
+		<div class="project-box">
+			<div class="project-box-item project-box-header">
+				<input type="hidden" value="<%=_id%>" />
+				<div class="pull-right">
+					<span><i class="icon-map-marker"></i></span>
+					<span><i class="icon-refresh"></i></span>
+				</div>
+				<div class="project-box-header-img">
+					<a href="#">
+						<img class="img-main" src="./img/user_images/<%=mainImage%>">
+					</a>
+				</div>
+				<div class="project-box-title">
+					<h4><%=title%></h4>						
+				</div>
+				<div class="project-box-user">
+					<p>por <%=creator.fullname%></p>
+				</div>			
+				<div class="project-box-brief">
+					<p><%=brief%></p>
+				</div>			
+			</div>
+			<div class="project-box-actions">
+				<button class="btn btn-success">INVERTIR</button>
+			</div>
+			<div class="project-box-item project-box-numbers">
+				<div class="project-box-section">
+					<span class="project-box-section-title">
+						Objetivo
+					</span>
+					<br />
+					<span>$ <%=goal%>.-</span>
+				</div>
+				<div class="project-box-section">
+					<span class="project-box-section-title">
+						Recaudado
+					</span>
+					<br />
+					<span><%=collectedPercent%>%</span>
+				</div>
+				<div class="project-box-section">
+					<span class="project-box-section-title">
+						Restan
+					</span>
+					<br />
+					<span><%=daysLeft%> dias</span>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script id="project-item-detail" type="text/template">
+		<div class="content project-content">
+			<div>
+				<div>
+					<h3><%=title%></h3>
+					<span>por <%=creator.fullname%></span>
+				</div>
+			</div>
+			<div>
+				<img src="../img/user_images/<%=mainImage%>" alt="<%=title%>">
+			</div>
+
+			<!-- columna derecha -->
+			<div>
+				<div>
+					<p><%=brief%></p>
+				</div>
+				<div>
+					<p>
+						<%=content%>
+					</p>
+				</div>
+			</div>
+
+			<!-- columna izquierda -->
+			<div>
+				<div>
+					<button>INVERTIR</button>
+				</div>
+				<div>			
+					<span>50</span>
+					<span>personas ya invirtieron</span>
+				</div>			
+				<div>			
+					<span>$ <%=collected%></span>
+					<span>invertidos de $<%=goal%></span>
+				</div>
+				<div>				
+					<span><%=daysLeft%></span>
+					<span>para finalizar</span>
+				</div>			
+			</div>
+		</div>	
+	</script>
+
+	<!-- SCRIPTS -->
+    <script src="js/vendor/underscore-min.js"></script>
+    <script src="js/vendor/backbone-min.js"></script>
+
+    <script src="js/init.js" type="text/javascript"></script>
+
+	<script src="js/backbone/routers/base.js"></script>
+
+    <script src="js/backbone/models/project.js"></script>
+    <script src="js/backbone/models/user.js"></script>
+                 
+    <script src="js/backbone/views/app.js"></script>
+    <script src="js/backbone/views/project.js"></script>
+
+    <script src="js/backbone/collections/projects.js"></script>  
+
+    <script src="js/main.js" type="text/javascript"></script>		
 {% endblock %}

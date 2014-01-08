@@ -1,14 +1,14 @@
 var express  = require('express.io'), //webserver (con socket.io)
 	swig     = require('swig'), //lib de templates
+	cons     = require('consolidate'),
 	_		 = require('underscore'),	
 	passport = require('passport');
 
-//var MongoStore = require('connect-mongo')(express); // servidor de sessiones
 var RedisStore = require('connect-redis')(express); // servidor de sessiones
 
 //var RedisStore = require('connect-redis')(express);
 var server = express();
-server.http().io(); //express y socket.io corriendo a la vez
+//server.http().io(); //express y socket.io corriendo a la vez
 
 // Configuracion para renderear vistas
 server.engine('html', swig.renderFile);
@@ -18,8 +18,6 @@ server.set('views','./app/views');
 //Carga de archivos estaticos
 server.use(express.static('./public')); //define la ruta de los archivos estaticos, esto hace que "oculte" la ruta de la carpeta en el servidor
  
-var users = []; 
-
 swig.setDefaults({
 	cache : false
 });
@@ -53,14 +51,18 @@ passport.deserializeUser(function(obj, done){
 });
 
 // Controllers
-var homeController = require('./app/controllers/home')(server, users);
-var appController  = require('./app/controllers/app')(server, users);
+var homeController = require('./app/controllers/home')(server);
+var projectController  = require('./app/controllers/project')(server);
+var entranceController = require('./app/controllers/entrance')(server);
+var userController = require('./app/controllers/user')(server);
 
 // Connections
 var twitterConnection = require('./app/connections/twitter')(server);
 
-server.listen(process.env.PORT || 3000, function(){
-	console.log('Server is running...');
+//inicia el servidor
+var port = process.env.PORT || 3000;
+server.listen(3000, function(){
+	console.log('Server is running at port '+ port +'...');
 });
 
 

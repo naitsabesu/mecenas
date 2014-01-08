@@ -1,6 +1,6 @@
 var passport = require('passport'),
 	TwitterStrategy = require('passport-twitter').Strategy;
-var User = require('../models/user');
+var User = require('../models/schemas').User;
 
 var twitterConnection = function(server){
 	console.log('twitterConnection cargado');
