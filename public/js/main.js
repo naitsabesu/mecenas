@@ -1,27 +1,23 @@
 $(document).ready(function(){
-	// window.io = io.connect();
-	// io.on('connect', function(socket){
-	// 	console.log('init io');
-	// 	io.emit('hello?');
-	// });
-	// io.on('saludo', function(data){
-	// 	console.log(data);
-	// });
-	// io.on('log-in', function(data){
-	// 	console.log(data);
-	// 	$('#users').append('<li>'+data.username+'</li>');
-	// });
-	// io.on('log-out', function(data){
-	// 	console.log(data);
-	// 	$('#users li').each(function(i, item){
-	// 		//innerText no funciona en firefox por eso va "text()"
-	// 		if($(item).text() === data.username){
-	// 			$(item).remove();
-	// 		}
-	// 	});
-	// });
-	console.log('Starting crowdfunding');
-	new Crowdfunding.App();
+	console.log('Starting crowdfunding 0.2 ');
+	var self = this;
 
-	//Backbone.history.navigate('', {trigger: true})	
+	window.app.routers.base = new Crowdfunding.Routers.BaseRouter();
+	window.app.collections.lastProjects = new Crowdfunding.Collections.Projects();
+	window.app.collections.lastProjects.on('add', function(item){
+		var it = new Crowdfunding.Views.Project({ model : item });
+		it.render();
+		$('#content').append(it.el);
+	});
+
+	var xhr = $.get('/projects/lasts');
+	xhr.done(function(resp){
+		 // levanta los datos recibidos en resp - JSON 
+		if(resp.status === 'OK'){
+			resp.data.forEach(function(item){
+				window.app.collections.lastProjects.add(item);
+			});
+		}
+	});
+
 });

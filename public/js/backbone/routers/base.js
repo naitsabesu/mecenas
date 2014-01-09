@@ -17,3 +17,4 @@ Crowdfunding.Routers.BaseRouter = Backbone.Router.extend({
 		window.app.projectid = id;
 	}
 });
+Backbone.history.start();

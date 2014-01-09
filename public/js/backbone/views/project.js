@@ -1,11 +1,9 @@
 Crowdfunding.Views.ProjectView = Backbone.View.extend({
-	el : $('body'),
 	model : Crowdfunding.Models.Project,
 	// tagName   : 'div',
-	// className : 'project-box',
-	//template  : _.template($('#project-item-min').html()),
+	className : 'project-box',
 	events : {
-		'click .project-box .project-box-title > h4' : 'displayExtended'
+		'click .project-box-title' : 'displayExtended'
 	},
 	initialize : function(){
 		var self = this;
@@ -20,47 +18,37 @@ Crowdfunding.Views.ProjectView = Backbone.View.extend({
 			self.render();
 		});
 
-		window.app.routers.base.on('route:displayExtended', function(data){
+		window.app.routers.base.on('route:displayExtended', function(){
 			self.render();
+			//este handler hace q salten el render en todos los views
 		});
+		$(this.el).attr('id', this.model.get('_id'));
+
 	},
-	render : function(data){
+	render : function(){
 		var self = this;
 		var locals = self.model.toJSON();
-		
-		if(window.app.state === 'root'){
-			$('#home-container').append(self.template(locals));
-/*			$(self.el).html(self.template(locals));
-			if( window.app.article !== this.model.get('id') ){
-				this.$el.hide();
+		if(window.app.state === 'displayExtended'){			
+			if(window.app.projectid === this.model.get('_id')){
 				this.$el.html('');
+				this.$el.hide();				
 			}else{
-				this.$el.show();
-				this.$el.html(this.extendedTemplate({post:locals}));
+				this.$el.html(this.extendedTemplate(locals));
+				this.$el.show();				
 			}
-		}else{
-			this.$el.show();
-			this.$el.html(this.template({post:locals}));
-*/
-		}else if(window.app.state === 'displayExtended'){
-			$('#project-container').html('');
-			
-			$('#home-container').fadeOut(function(){
-				$('#project-container').append(self.extendedTemplate(locals));
-				$('#project-container').fadeIn('fast');
-			});
+		} else {
+			this.$el.html(this.template(locals));
 		}
 		return this;
 	},
 	displayExtended : function(){
-		// console.log('displayExtended '+ this.model.get('_id'));
+		console.log('displayExtended '+ this.model.get('_id'));
 		// var self = this;
 		Backbone.history.navigate('project/' + this.model.get('_id'), { trigger: true });		
 	},
 	unrender : function(){
 		$(this.el).remove(); //quita el elemento del DOM
 	},
-	swap : function(){},
 	remove : function(){
 		this.model.destroy(); 
 		//elimina el objeto de su coleccion -> esto borra el dato de la bd 

@@ -1,26 +1,23 @@
 {% extends 'layout.html' %}
 {% block content %}
 	<!-- lista de proyectos -->
-	<div id="home-container" class="content">
-		<div id="main-image">
-			<div style="width:100%;margin:0 auto;">
-				<img src="img/test/img4-ancha.gif" style="width:100%">
-			</div>
+	<!-- <div id="home-container" class="content"> -->
+	<div id="main-image">
+		<div style="width:100%;margin:0 auto;">
+			<img src="img/test/img4-ancha.gif" style="width:100%">
 		</div>
-
+	</div>
+	<div id="content" class="content">
 		<div style="width:900px;margin:0 auto;">
 			<div style="">
 				<h4>Ultimos proyectos</h4>
 			</div>
 		</div>				
 	</div>
-	<div id="project-container"></div>
 
 	<!-- TEMPLATES -->
 	<script id="project-item-min" type="text/template">
-		<div class="project-box">
 			<div class="project-box-item project-box-header">
-				<input type="hidden" value="<%=_id%>" />
 				<div class="pull-right">
 					<span><i class="icon-map-marker"></i></span>
 					<span><i class="icon-refresh"></i></span>
@@ -66,7 +63,7 @@
 					<span><%=daysLeft%> dias</span>
 				</div>
 			</div>
-		</div>
+		
 	</script>
 
 	<script id="project-item-detail" type="text/template">
@@ -125,7 +122,6 @@
     <script src="js/backbone/models/project.js"></script>
     <script src="js/backbone/models/user.js"></script>
                  
-    <script src="js/backbone/views/app.js"></script>
     <script src="js/backbone/views/project.js"></script>
 
     <script src="js/backbone/collections/projects.js"></script>  

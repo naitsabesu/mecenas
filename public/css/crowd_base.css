@@ -105,6 +105,24 @@ a .user
 	position: relative;
 	width: 900px;
 }
+
+#content
+{
+	margin: 1em auto;
+	padding: 0px;
+	/*border: 1px dashed #CCC;*/
+	position: relative;
+	width: 900px;
+}
+
+.content
+{
+	position: relative;
+	top: 80px;
+	width: 950px;
+	margin: 0 auto;
+}
+
 .project-box
 {
 	border: 1px solid #CCC;
@@ -176,13 +194,7 @@ a .user
 	font-weight: bold;
 }
 
-.content
-{
-	position: relative;
-	top: 80px;
-	width: 950px;
-	margin: 0 auto;
-}
+
 
 /* ENTRANCE */
 .entrance-content{}
