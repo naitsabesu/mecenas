@@ -76,7 +76,7 @@ var projectController = function(server){
 			creator : req.session.user._id,    //por ahora es un string pero deberia ser un objeto User
 			title	: req.body.title,
 			brief	: req.body.brief,
-			content : req.body.content,
+			content : req.body.project-content,
 
 			mainImage : fileNameToSave, //TODO: subir una imagen al servidor o a S3 
 			goal	: req.body.pledge,			

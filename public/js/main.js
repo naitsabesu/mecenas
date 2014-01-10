@@ -4,8 +4,8 @@ $(document).ready(function(){
 
 	window.app.routers.base = new Crowdfunding.Routers.BaseRouter();
 	window.app.collections.lastProjects = new Crowdfunding.Collections.Projects();
-	window.app.collections.lastProjects.on('add', function(item){
-		var it = new Crowdfunding.Views.Project({ model : item });
+	window.app.collections.lastProjects.on('add', function(model){
+		var it = new Crowdfunding.Views.ProjectView(model);
 		it.render();
 		$('#content').append(it.el);
 	});

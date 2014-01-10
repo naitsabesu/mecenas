@@ -1,21 +1,6 @@
 Crowdfunding.Models.ProjectModel = Backbone.Model.extend({
-	urlRoot:"",
+	urlRoot:"/projects",
 	defaults:{
-		// title     : '',
-		// brief     : '',
-		// content   : '',		
-		
-		// creator   : {},
-		// mainImage : '',
-		// location  : '',
-
-		// created   : '',
-		// updated   : '',
-		// goalDate  : '',
-
-		// backers   : '',
-		// collected : '',
-		// goal      : '',		
 		collectedPercent : function(){
 			var r = ((this.goal / this.collected)*100);
 			if(isNaN(r)){
@@ -31,8 +16,10 @@ Crowdfunding.Models.ProjectModel = Backbone.Model.extend({
 		return date.toString("MMMM dd, yyyy");
 	},
 	parse : function(resp) {
-		// the collection does not output same json format to models;
+		// the collection does not output same json format to models;		
+		debugger;
 		if(resp.data){
+
 			return resp.data;
 		}else{
 			return resp;

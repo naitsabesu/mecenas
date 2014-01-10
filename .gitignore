@@ -1,9 +1,10 @@
 *.doc
 *.zip
 *.rdb
+*.db
 
 node_modules/
 data/
-public/img/user_images/
+public/img/user_images/*.*
 docs/
 bkp/

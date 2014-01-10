@@ -1,15 +1,15 @@
 Crowdfunding.Views.ProjectView = Backbone.View.extend({
 	model : Crowdfunding.Models.Project,
-	// tagName   : 'div',
+	tagName   : 'div',
 	className : 'project-box',
 	events : {
 		'click .project-box-title' : 'displayExtended'
 	},
-	initialize : function(){
+	template : _.template($('#project-item-min').html()),
+	initialize : function(model){
 		var self = this;
-		this.template = _.template($('#project-item-min').html());
-		this.extendedTemplate = _.template($('#project-item-detail').html()); 
-
+		this.model = model;
+		
 		this.model.on('change', function(){
 			self.render();
 		});
@@ -18,31 +18,31 @@ Crowdfunding.Views.ProjectView = Backbone.View.extend({
 			self.render();
 		});
 
-		window.app.routers.base.on('route:displayExtended', function(){
-			self.render();
-			//este handler hace q salten el render en todos los views
-		});
-		$(this.el).attr('id', this.model.get('_id'));
+		// window.app.routers.base.on('route:displayExtended', function(){
+		// 	self.render();
+		// 	//este handler hace q salten el render en todos los views
+		// });
+		// $(this.el).attr('id', this.model.get('_id'));
 
 	},
 	render : function(){
 		var self = this;
 		var locals = self.model.toJSON();
-		if(window.app.state === 'displayExtended'){			
-			if(window.app.projectid !== this.model.get('_id')){
-				this.$el.html('');
-				this.$el.hide();				
-			}else{
-				this.$el.html(this.extendedTemplate(locals));
-				this.$el.show();				
-			}
+		if(window.app.state === 'displayExtended'){                        
+		        if(window.app.projectid !== this.model.get('_id')){
+		                this.$el.html('');
+		                this.$el.hide();                                
+		        }else{
+		                this.$el.html(this.extendedTemplate(locals));
+		                this.$el.show();                                
+		        }
 		} else {
-			this.$el.html(this.template(locals));
+		        this.$el.html(this.template(locals));
 		}
 		return this;
 	},
 	displayExtended : function(){
-		console.log('displayExtended '+ this.model.get('_id'));
+		console.log('to:displayExtended '+ this.model.get('_id'));
 		// var self = this;
 		Backbone.history.navigate('project/' + this.model.get('_id'), { trigger: true });
 		// this.render();
@@ -57,4 +57,4 @@ Crowdfunding.Views.ProjectView = Backbone.View.extend({
 	}
 });
 
-Crowdfunding.Views.Project = Crowdfunding.Views.ProjectView;
+// Crowdfunding.Views.Project = Crowdfunding.Views.ProjectView;

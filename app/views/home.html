@@ -1,13 +1,12 @@
 {% extends 'layout.html' %}
 {% block content %}
 	<!-- lista de proyectos -->
-	<!-- <div id="home-container" class="content"> -->
 	<div id="main-image">
 		<div style="width:100%;margin:0 auto;">
 			<img src="img/test/img4-ancha.gif" style="width:100%">
 		</div>
 	</div>
-	<div id="content" class="content">
+	<div id="content" class="content-min">
 		<div style="width:900px;margin:0 auto;">
 			<div style="">
 				<h4>Ultimos proyectos</h4>
@@ -17,98 +16,93 @@
 
 	<!-- TEMPLATES -->
 	<script id="project-item-min" type="text/template">
-			<div class="project-box-item project-box-header">
-				<div class="pull-right">
-					<span><i class="icon-map-marker"></i></span>
-					<span><i class="icon-refresh"></i></span>
-				</div>
-				<div class="project-box-header-img">
-					<a href="#">
-						<img class="img-main" src="./img/user_images/<%=mainImage%>">
-					</a>
-				</div>
-				<div class="project-box-title">
-					<h4><%=title%></h4>						
-				</div>
-				<div class="project-box-user">
-					<p>por <%=creator.fullname%></p>
-				</div>			
-				<div class="project-box-brief">
-					<p><%=brief%></p>
-				</div>			
+		<div class="project-box-item project-box-header">
+			<div class="pull-right">
+				<span><i class="icon-map-marker"></i></span>
+				<span><i class="icon-refresh"></i></span>
 			</div>
-			<div class="project-box-actions">
-				<button class="btn btn-success">INVERTIR</button>
+			<div class="project-box-header-img">
+				<a href="#">
+					<img class="img-main" src="./img/user_images/<%=mainImage%>">
+				</a>
 			</div>
-			<div class="project-box-item project-box-numbers">
-				<div class="project-box-section">
-					<span class="project-box-section-title">
-						Objetivo
-					</span>
-					<br />
-					<span>$ <%=goal%>.-</span>
-				</div>
-				<div class="project-box-section">
-					<span class="project-box-section-title">
-						Recaudado
-					</span>
-					<br />
-					<span><%=collectedPercent%>%</span>
-				</div>
-				<div class="project-box-section">
-					<span class="project-box-section-title">
-						Restan
-					</span>
-					<br />
-					<span><%=daysLeft%> dias</span>
-				</div>
+			<div class="project-box-title">
+				<h4><%=title%></h4>
 			</div>
-		
+			<div class="project-box-user">
+				<p>por <%=creator.fullname%></p>
+			</div>
+			<div class="project-box-brief">
+				<p><%=brief%></p>
+			</div>			
+		</div>
+		<div class="project-box-actions">
+			<button class="btn btn-success">INVERTIR</button>
+		</div>
+		<div class="project-box-item project-box-numbers">
+			<div class="project-box-section">
+				<span class="project-box-section-title">
+					Objetivo
+				</span>
+				<br />
+				<span>$ <%=goal%>.-</span>
+			</div>
+			<div class="project-box-section">
+				<span class="project-box-section-title">
+					Recaudado
+				</span>
+				<br />
+				<span><%=collectedPercent%>%</span>
+			</div>
+			<div class="project-box-section">
+				<span class="project-box-section-title">
+					Restan
+				</span>
+				<br />
+				<span><%=daysLeft%> dias</span>
+			</div>
+		</div>
 	</script>
 
-	<script id="project-item-detail" type="text/template">
-		<div class="content project-content">
-			<div>
-				<div>
+	<script id="project-item-extended" type="text/template">		
+			<div class="project-extended-header">
+				<div class="project-extended-header-title">
 					<h3><%=title%></h3>
-					<span>por <%=creator.fullname%></span>
+				</div>
+				<div class="project-extended-header-user">
+					<p>por <%=creator.fullname%></p>
 				</div>
 			</div>
-			<div>
-				<img src="../img/user_images/<%=mainImage%>" alt="<%=title%>">
-			</div>
+			<img src="../img/user_images/<%=mainImage%>" alt="<%=title%>">
 
-			<!-- columna derecha -->
-			<div>
-				<div>
-					<p><%=brief%></p>
-				</div>
-				<div>
+			<div class="project-extended-body">
+				<!-- columna izquierda -->
+				<div class="project-extended-detail">
 					<p>
 						<%=content%>
 					</p>
 				</div>
+				<!-- columna derecha -->
+				<div class="project-extended-aside">
+					<div class="backers">			
+						<p class="backers-count">50</p>
+						<span>inversores</span>
+					</div>			
+					<div class="collected">			
+						<p class="collected-count">$<%=collected%></p>
+						<span>invertidos de $<%=goal%></span>
+					</div>
+					<div class="days-left">				
+						<p class="days-left-count"><%=daysLeft%></p>
+						<span>dias para finalizar</span>
+					</div>
+					<div>
+						<button class="btn btn-success">INVERTIR</button>
+					</div>					
+				</div>							
 			</div>
 
-			<!-- columna izquierda -->
-			<div>
-				<div>
-					<button>INVERTIR</button>
-				</div>
-				<div>			
-					<span>50</span>
-					<span>personas ya invirtieron</span>
-				</div>			
-				<div>			
-					<span>$ <%=collected%></span>
-					<span>invertidos de $<%=goal%></span>
-				</div>
-				<div>				
-					<span><%=daysLeft%></span>
-					<span>para finalizar</span>
-				</div>			
-			</div>
-		</div>	
+		
 	</script>
 
 	<!-- SCRIPTS -->
@@ -123,6 +117,7 @@
     <script src="js/backbone/models/user.js"></script>
                  
     <script src="js/backbone/views/project.js"></script>
+    <script src="js/backbone/views/projectExtended.js"></script>    
 
     <script src="js/backbone/collections/projects.js"></script>  
 
