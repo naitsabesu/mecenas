@@ -12,9 +12,12 @@ Crowdfunding.Routers.BaseRouter = Backbone.Router.extend({
 		window.app.state = "root";
 	},
 	displayExtended : function(id){
-		//console.log('router:displayExtended');
+		console.log('router:displayExtended');
 		window.app.state = 'displayExtended';
 		window.app.projectid = id;
+		// $('#content > div').html('');
+		// $('#content > div').hide('');
+
 	}
 });
-Backbone.history.start();
+Backbone.history.start({ pushState : true });

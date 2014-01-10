@@ -29,7 +29,7 @@ Crowdfunding.Views.ProjectView = Backbone.View.extend({
 		var self = this;
 		var locals = self.model.toJSON();
 		if(window.app.state === 'displayExtended'){			
-			if(window.app.projectid === this.model.get('_id')){
+			if(window.app.projectid !== this.model.get('_id')){
 				this.$el.html('');
 				this.$el.hide();				
 			}else{
@@ -44,7 +44,8 @@ Crowdfunding.Views.ProjectView = Backbone.View.extend({
 	displayExtended : function(){
 		console.log('displayExtended '+ this.model.get('_id'));
 		// var self = this;
-		Backbone.history.navigate('project/' + this.model.get('_id'), { trigger: true });		
+		Backbone.history.navigate('project/' + this.model.get('_id'), { trigger: true });
+		// this.render();
 	},
 	unrender : function(){
 		$(this.el).remove(); //quita el elemento del DOM
