@@ -3,8 +3,8 @@
 *.rdb
 *.db
 
-node_modules/
 data/
-public/img/user_images/*.*
+server/node_modules/
+app/img/user_images/*.*
 docs/
 bkp/
