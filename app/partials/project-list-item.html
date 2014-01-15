@@ -1,48 +1,63 @@
-<div ng-repeat="project in projects">
-	<div class="project-box-item project-box-header">
-		<div class="pull-right">
-			<span><i class="icon-map-marker"></i></span>
-			<span><i class="icon-refresh"></i></span>
-		</div>
-		<div class="project-box-header-img">
-			<a href="#">
-				<img class="img-main" ng-src="{{'./img/user_images/' || project.mainImage}}">
-			</a>
-		</div>
-		<div class="project-box-title">
-			<h4>{{project.title}}</h4>
-		</div>
-		<div class="project-box-user">
-			<p>por {{project.creator.fullname}}</p>
-		</div>
-		<div class="project-box-brief">
-			<p>{{project.brief}}</p>
-		</div>			
+<div id="main-image">
+	<div style="width:100%;margin:0 auto;">
+		<img src="img/test/img4-ancha.gif" style="width:100%">
 	</div>
-	<div class="project-box-actions">
-		<button class="btn btn-success">INVERTIR</button>
-	</div>
-	<div class="project-box-item project-box-numbers">
-		<div class="project-box-section">
-			<span class="project-box-section-title">
-				Objetivo
-			</span>
-			<br />
-			<span>$ {{goal}}.-</span>
+</div>
+
+<div id="content" class="content-min">
+	
+		<div style="width:900px;margin:0 auto;">
+			<div style="">
+				<h4>Ultimos proyectos</h4>
+			</div>
+		</div>				
+		<div ng-repeat="project in projects" class="project-box">
+			<div class="project-box-item project-box-header">
+				<div class="pull-right">
+					<span><i class="icon-map-marker"></i></span>
+					<span><i class="icon-refresh"></i></span>
+				</div>
+				<div class="project-box-header-img">
+					<a href="#">
+						<img class="img-main" ng-src="./img/user_images/{{project.mainImage}}">
+					</a>
+				</div>
+				<div class="project-box-title">
+					<h4>{{project.title}}</h4>
+				</div>
+				<div class="project-box-user">
+					<p>por {{project.creator.fullname}}</p>
+				</div>
+				<div class="project-box-brief">
+					<p>{{project.brief}}</p>
+				</div>			
+			</div>
+			<div class="project-box-actions">
+				<button class="btn btn-success">INVERTIR</button>
+			</div>
+			<div class="project-box-item project-box-numbers">
+				<div class="project-box-section">
+					<span class="project-box-section-title">
+						Objetivo
+					</span>
+					<br />
+					<span>$ {{goal}}.-</span>
+				</div>
+				<div class="project-box-section">
+					<span class="project-box-section-title">
+						Recaudado
+					</span>
+					<br />
+					<span>{{collectedPercent}}%</span>
+				</div>
+				<div class="project-box-section">
+					<span class="project-box-section-title">
+						Restan
+					</span>
+					<br />
+					<span>{{daysLeft}} dias</span>
+				</div>
+			</div>
 		</div>
-		<div class="project-box-section">
-			<span class="project-box-section-title">
-				Recaudado
-			</span>
-			<br />
-			<span>{{collectedPercent}}%</span>
-		</div>
-		<div class="project-box-section">
-			<span class="project-box-section-title">
-				Restan
-			</span>
-			<br />
-			<span>{{daysLeft}} dias</span>
-		</div>
-	</div>
+
 </div>
