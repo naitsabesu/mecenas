@@ -2,6 +2,7 @@ var _ = require('underscore'); //manejo de arreglos entre otras funcionalidades
 var Project = require('../models/schemas').Project;
 var UploadFile = require('../util/upload');
 var Globals = require('../util/globals');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 
 var projectController = function(server){
@@ -35,6 +36,7 @@ var projectController = function(server){
 	/** devuelve los ultimos proyectos creados **/
 	server.get('/projects/:projectId', function(req, res){
 		var param = req.params.projectId;
+		console.log('get:/projects/'+param);
 		if(param === 'lasts'){
 			Project.find({}) //busca todos los documentos del tipo Project
 			.populate('creator') //llena el objeto usuario
@@ -51,7 +53,16 @@ var projectController = function(server){
 				res.send(200, projectsAsJSON);
 			});
 		}else{
-
+			Project.findOne({ _id : param })
+			.populate('creator')
+			.exec(function(err, project){
+				if(err){
+					console.log(err);
+					return;
+				}
+				console.log(project.toJSON());
+				res.send(200, project.toJSON());
+			});
 		}
 
 	});

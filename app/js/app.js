@@ -3,8 +3,10 @@
 /* App Module */
 
 var mecenasApp = angular.module('mecenasApp', [
+	'ngSanitize',
 	'ngRoute',
   	'mecenasControllers',
+  	'mecenasFilters',
   	'mecenasServices'
 ]);
 
@@ -15,10 +17,18 @@ mecenasApp.config(['$routeProvider',
 				templateUrl: 'partials/project-list-item.html',
 				controller: 'ProjectListCtrl'
 			}).    
-			when('/projects', {
-				templateUrl: 'partials/project-list-item.html',
-				controller: 'ProjectListCtrl'
+			when('/projects/:projectId',{
+				templateUrl: 'partials/project-detail.html',
+				controller: 'ProjectDetailCtrl'
 			}).
+			when('/entrance',{
+				templateUrl: 'partials/user-log.html',
+				controller: 'EntranceCtrl'
+			}).
+			when('/project/new',{
+				templateUrl: 'partials/project-new.html',
+				controller: 'EntranceCtrl'
+			}).					
 			otherwise({
 				redirectTo: '/'
 			});

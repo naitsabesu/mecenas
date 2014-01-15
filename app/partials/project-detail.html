@@ -1,0 +1,41 @@
+<div id="content" class="content-detail">
+	<div class="project-detail-header">
+		<div class="project-detail-header-title">
+			<h3>{{ project.title }}</h3>
+		</div>
+		<div class="project-detail-header-user">
+			<p>por {{ project.creator.fullname }}</p>
+		</div>
+	</div>
+
+	<div class="project-detail-body">
+		<!-- columna izquierda -->
+		<div class="project-detail-detail">
+			<div class="project-detail-img">
+				<img ng-src="./img/user_images/{{ project.mainImage }}" alt="{{ project.title }}">
+			</div>		
+			<p ng-bind-html="project.content">
+			</p>
+		</div>
+
+		<!-- columna derecha -->
+		<div class="project-detail-aside">
+			<div class="backers">			
+				<p class="backers-count">50</p>
+				<span>inversores</span>
+			</div>			
+			<div class="collected">			
+				<p class="collected-count">${{ project.goal | percent : project.collected }}</p>
+				<span>invertidos de ${{ project.goal }}</span>
+			</div>
+			<div class="days-left">				
+				<p class="days-left-count">{{ project.created | daysLeft }}</p>
+				<span>dias para finalizar</span>
+			</div>
+			<div>
+				<button class="btn btn-success">INVERTIR</button>
+			</div>					
+		</div>
+
+	</div>
+</div>			

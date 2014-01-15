@@ -1,11 +1,10 @@
 <div id="main-image">
 	<div style="width:100%;margin:0 auto;">
-		<img src="img/test/img4-ancha.gif" style="width:100%">
+		<img src="img/test/1280x300_1.jpg" style="width:100%">
 	</div>
 </div>
 
-<div id="content" class="content-min">
-	
+<div id="content" class="content-min">	
 		<div style="width:900px;margin:0 auto;">
 			<div style="">
 				<h4>Ultimos proyectos</h4>
@@ -18,12 +17,14 @@
 					<span><i class="icon-refresh"></i></span>
 				</div>
 				<div class="project-box-header-img">
-					<a href="#">
+					<a href="#/projects/{{ project._id }}">
 						<img class="img-main" ng-src="./img/user_images/{{project.mainImage}}">
 					</a>
 				</div>
 				<div class="project-box-title">
-					<h4>{{project.title}}</h4>
+					<a href="#/projects/{{ project._id }}">
+						<h4>{{ project.title }}</h4>
+					</a>
 				</div>
 				<div class="project-box-user">
 					<p>por {{project.creator.fullname}}</p>
@@ -41,21 +42,21 @@
 						Objetivo
 					</span>
 					<br />
-					<span>$ {{goal}}.-</span>
+					<span>$ {{project.goal}}.-</span>
 				</div>
 				<div class="project-box-section">
 					<span class="project-box-section-title">
 						Recaudado
 					</span>
 					<br />
-					<span>{{collectedPercent}}%</span>
+					<span>{{ project.goal | percent : project.collected }}%</span>
 				</div>
 				<div class="project-box-section">
 					<span class="project-box-section-title">
 						Restan
 					</span>
 					<br />
-					<span>{{daysLeft}} dias</span>
+					<span>{{ project.created | daysLeft }} dias</span>
 				</div>
 			</div>
 		</div>

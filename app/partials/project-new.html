@@ -1,0 +1,33 @@
+<div id="content" class="content project-content">
+	<legend>Nuevo proyecto</legend>
+	<form method="post" action="/project/create" enctype="multipart/form-data">
+		<ol>
+			<li>
+				<label for="title">TITULO</label>
+				<input type="text" name="title" id="title" placeholder="Titulo">
+			</li>
+			<li>
+				<label for="title">MUESTRANOS LA IMAGEN PRINCIPAL DE TU PROYECTO</label>
+				<input type="file" name="image" id="image">
+			</li>
+			<li>
+				<label for="brief">RESUMEN</label>
+				<input type="text" name="brief" id="brief" placeholder="Resumen en 140 caracteres...">
+			</li>
+			<li>
+				<label for="pledge">MONTO A RECAUDAR</label>
+				<input type="text" name="pledge" id="pledge" placeholder="$" />
+			</li>
+			<li>
+				<label for="pledge">DESARROLLA TU PROYECTO</label>
+				<textarea class="ckeditor" cols="40" id="project-content" name="project-content" rows="10"></textarea>
+			</li>
+			<li>
+				<button class="btn" type="reset">Cancelar</button>		
+				<button class="btn btn-primary" type="submit">Guardar</button>		
+			</li>
+		</ol>
+	</form>
+</div>
+
+<script type="text/javascript" src="/js/plugins/ckeditor/ckeditor.js"></script>
