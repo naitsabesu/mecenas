@@ -17,7 +17,28 @@ mecenasControllers.controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'P
 
 mecenasControllers.controller('ProjectNewCtrl', ['$scope']);
 
-mecenasControllers.controller('EntranceCtrl', ['$scope']);
+mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', 'SessionService', 
+	function($scope,$location,SessionService){
+    	$scope.user = SessionService.getUser();
+    	
+    	$scope.login = function() {
+    		SessionService.login($scope.user, loginHandler, errorHandler);
+    	};
+
+    	function loginHandler(res) {
+    		if(SessionService.authorized()) {
+    			$location.path('/'); //autorizado
+    		} else {
+    			$scope.message = "Invalid username or password!";
+    		}
+    	}
+
+    	function errorHandler(err) {
+        	$scope.message = "Error! " + err.data.error;
+    	}		
+
+	}
+]);
 
 
 

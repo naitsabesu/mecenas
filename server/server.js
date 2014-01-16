@@ -53,7 +53,7 @@ server.configure(function(){
 // Controllers
 var homeController = require('./controllers/home')(server);
 var projectController  = require('./controllers/project')(server);
-// var entranceController = require('./app/controllers/entrance')(server);
+var entranceController = require('./controllers/entrance')(server);
 // var userController = require('./app/controllers/user')(server);
 
 // Connections

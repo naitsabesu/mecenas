@@ -19,8 +19,11 @@ var entranceController = function(server){
 	}
 
 	//LOGIN/SIGNUP PAGE
-	server.get('/entrance', function(req,res){
-		res.render('entrance');
+	server.post('/entrance', function(req,res){
+		var email = req.body.email,
+			pass  = req.body.password,
+			hashedPass = passwordHash.generate(pass);		
+		console.log('GET:'+ email +'-'+ pass +'-'+ hashedPass);
 	});
 
 	//SIGNUP

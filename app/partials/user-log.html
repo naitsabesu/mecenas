@@ -2,23 +2,24 @@
 	<div class="entrance-box">
 		<h4>Log In</h4>
 		<p>Ingresa tus datos para continuar</p><br>
-		<form action="/entrance/login" method="post">
+		<form id="login-form" ng-submit="login()" name="login-form">
+			<p class="error-message" ng-show="message">{{message}}</p>
 			<fieldset>
 				<ol>
 					<li>
 						<label for="title">EMAIL</label>
-						<input type="text" name="usr_mail" id="usr_mail" placeholder="Email">
+						<input type="text" ng-model="user.email" placeholder="Email" required autofocus>
 					</li>
 					<li>
 						<label for="title">CONTRASEÑA</label>
-						<input type="password" name="usr_pass" id="usr_pass" placeholder="Contraseña">
+						<input type="password" ng-model="user.password" placeholder="Contraseña" required>
 					</li>
 					<li>
 						<input checked="checked" class="checkbox" id="entrance_remember_me" name="entrance_remember_me"  type="checkbox" value="1">		
 						<label class="remember-me" for="entrance_remember_me">No salir de la cuenta</label>
 					</li>
 					<li>
-						<button class="btn btn-primary">Entrar</button>
+						<button type="submit" class="btn btn-primary" ng-disabled="{{ login-form.$invalid }}">Entrar</button>
 					</li>
 				</ol>
 			</fieldset>
