@@ -3,7 +3,19 @@
 /* Controllers */
 var mecenasControllers = angular.module('mecenasControllers', []);
 
-mecenasControllers.controller('ProjectListCtrl', ['$scope', 'Project',
+mecenasControllers.controller('UserInfoCtrl', ['$scope', 'SessionService',
+	function($scope, SessionService) {
+		$scope.authorized = SessionService.authorized();
+		debugger;
+		if($scope.authorized){
+			$scope.user = SessionService.getUser();
+		}else{
+			delete $scope.user;
+		}
+	}]);
+
+
+mecenasControllers.controller('ProjectListCtrl', ['$scope', 'Project', 
 	function($scope, Project) {
 		$scope.projects = Project.query();
 	}]);

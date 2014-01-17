@@ -18,7 +18,18 @@
 				<li><a href="#/project/new">Inicia</a></li>
 				<li><a href="#/">Explora</a></li>
 				<li><a href="#/">Blog</a></li>
-				<li id="user-info"><a href="#/entrance">Entrar</a></li>
+				<li id="user-info" ng-controller="UserInfoCtrl">				
+					<div ng-if = "authorized == true">
+						<span class="label label-info">
+							<a href="/user" alt="{{ user.fullname }}">{{ user.fullname }}</a>
+						</span>
+						<br>
+						<a href="/entrance/logout">Salir</a>
+					</div>
+				    <div ng-if = "authorized != true">
+				        <a href="#/entrance">Entrar</a>
+				    </div>
+				</li>
 			</ul>
 		</div>
 	</div>

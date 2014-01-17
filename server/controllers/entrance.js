@@ -90,14 +90,21 @@ var entranceController = function(server){
 			}
 			if(user){
 				if(passwordHash.verify(pass, user.toJSON().password)){
+					var _user = new User()
+					
+
 					//guardo el usuario en sesion y redirecciona al root
+					user.password = null;
+					console.log('user: '+user);
+
 					req.session.user = user;
 					req.session.authorized = true;
 					res.send(200, { authorized : true, user : user });
 				}else{
-				req.session.user = null;
-				req.session.authorized = false;
-				res.send(200, { authorized : false, msg : 'Contraseña invalidos.' });					
+
+					req.session.user = null;
+					req.session.authorized = false;
+					res.send(200, { authorized : false, msg : 'Contraseña invalidos.' });					
 				}
 			}else{
 				req.session.user = null;
