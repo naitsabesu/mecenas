@@ -19,12 +19,12 @@ var entranceController = function(server){
 	}
 
 	//LOGIN/SIGNUP PAGE
-	server.post('/entrance', function(req,res){
-		var email = req.body.email,
-			pass  = req.body.password,
-			hashedPass = passwordHash.generate(pass);		
-		console.log('GET:'+ email +'-'+ pass +'-'+ hashedPass);
-	});
+	// server.post('/entrance', function(req,res){
+	// 	var email = req.body.email,
+	// 		pass  = req.body.password,
+	// 		hashedPass = passwordHash.generate(pass);		
+	// 	console.log('GET:'+ email +'-'+ pass +'-'+ hashedPass);
+	// });
 
 	//SIGNUP
 	//TODO: Este deberia ir en "controller/user.js"
@@ -71,11 +71,13 @@ var entranceController = function(server){
 		});
 	});
 	
-	server.post('/entrance/login', function(req, res){
+	server.post('/entrance', function(req, res){
 		// lavantar datos
-		var email = req.body.usr_mail,
-			pass  = req.body.usr_pass,
+		var email = req.body.email,
+			pass  = req.body.password,
 			hashedPass = passwordHash.generate(pass);
+
+		console.log('GET:'+ email +'-'+ pass +'-'+ hashedPass);
 
 		//buscar usuario en la base
 		User.findOne({
@@ -90,11 +92,20 @@ var entranceController = function(server){
 				if(passwordHash.verify(pass, user.toJSON().password)){
 					//guardo el usuario en sesion y redirecciona al root
 					req.session.user = user;
-					res.redirect('/');
+					req.session.authorized = true;
+					res.send(200, { authorized : true, user : user });
+				}else{
+				req.session.user = null;
+				req.session.authorized = false;
+				res.send(200, { authorized : false, msg : 'Contraseña invalidos.' });					
 				}
+			}else{
+				req.session.user = null;
+				req.session.authorized = false;
+				res.send(200, { authorized : false, msg : 'Usuario y/o contraseña invalidos.' });
 			}
-			//si el password no es correcto se muestra la vista entrance con error
-			res.render('entrance',{ err : 'login' });
+			
+			
 		});
 	});
 
