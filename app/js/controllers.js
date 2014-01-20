@@ -3,20 +3,14 @@
 /* Controllers */
 var mecenasControllers = angular.module('mecenasControllers', []);
 
-mecenasControllers.controller('UserInfoCtrl', ['$scope', 'SessionService',
-	function($scope, SessionService) {
-		$scope.authorized = SessionService.authorized();
-		debugger;
-		if($scope.authorized){
-			$scope.user = SessionService.getUser();
-		}else{
-			delete $scope.user;
-		}
+mecenasControllers.controller('UserInfoCtrl', ['$scope', '$routeParams','SessionService',
+	function($scope, $routeParams, SessionService) {
+
 	}]);
 
 
-mecenasControllers.controller('ProjectListCtrl', ['$scope', 'Project', 
-	function($scope, Project) {
+mecenasControllers.controller('ProjectListCtrl', ['$scope', 'Project', 'SessionService',
+	function($scope, Project, SessionService) {
 		$scope.projects = Project.query();
 	}]);
 
@@ -29,9 +23,19 @@ mecenasControllers.controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'P
 
 mecenasControllers.controller('ProjectNewCtrl', ['$scope']);
 
-mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', 'SessionService', 
-	function($scope,$location,SessionService){
+mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', '$routeParams','SessionService', 
+	function($scope, $location, $routeParams, SessionService){
     	$scope.user = SessionService.getUser();
+
+		//chequea cada vez q la aplicacion cambia de ruta si hubo modificaciones en la sesion
+		$scope.$on('$routeChangeSuccess',function(){
+			$scope.authorized = SessionService.authorized();
+			if($scope.authorized){
+				$scope.user = SessionService.getUser();
+			}else{
+				delete $scope.user;
+			}
+		});
     	
     	$scope.login = function() {
     		SessionService.login($scope.user, loginHandler, errorHandler);
@@ -45,9 +49,21 @@ mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', 'SessionSe
     		}
     	}
 
+
+        $scope.logout = function() {
+            SessionService.logout(logoutHandler, errorHandler);
+        };
+
+        function logoutHandler(res) {
+        	debugger;
+        	$location.path('/entrance');
+        }
+
     	function errorHandler(err) {
         	$scope.message = "Error! " + err.data.error;
-    	}		
+    	}
+
+
 
 	}
 ]);

@@ -77,8 +77,6 @@ var entranceController = function(server){
 			pass  = req.body.password,
 			hashedPass = passwordHash.generate(pass);
 
-		console.log('GET:'+ email +'-'+ pass +'-'+ hashedPass);
-
 		//buscar usuario en la base
 		User.findOne({
 			email : email
@@ -90,35 +88,28 @@ var entranceController = function(server){
 			}
 			if(user){
 				if(passwordHash.verify(pass, user.toJSON().password)){
-					var _user = new User()
-					
+					var _user = new User();
 
-					//guardo el usuario en sesion y redirecciona al root
+					//guardo el usuario en sesion
 					user.password = null;
 					console.log('user: '+user);
 
 					req.session.user = user;
 					req.session.authorized = true;
 					res.send(200, { authorized : true, user : user });
-				}else{
-
-					req.session.user = null;
-					req.session.authorized = false;
-					res.send(200, { authorized : false, msg : 'Contraseña invalidos.' });					
+					return;
 				}
-			}else{
-				req.session.user = null;
-				req.session.authorized = false;
-				res.send(200, { authorized : false, msg : 'Usuario y/o contraseña invalidos.' });
 			}
-			
-			
+			req.session.user = null;
+			req.session.authorized = false;
+			res.send(200, { authorized : false, msg : 'Usuario y/o contraseña invalidos.' });
 		});
 	});
 
-	server.get('/entrance/logout', function(req, res){
+	server.get('/logout', function(req, res){
+		console.log('get: '+ req.session);
 		req.session.destroy();
-		res.redirect('/');
+		res.send(200, { authorized : false });
 	});
 };
 

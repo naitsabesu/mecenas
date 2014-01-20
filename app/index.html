@@ -9,7 +9,7 @@
 </head>
 <body>
 	<!-- barra superior -->
-	<div id="navigation">
+	<div id="navigation" ng-controller="EntranceCtrl">
 		<div id="navigation-inner">
 			<a href="/" id="logo" class="brand">
 				<img src="/img/logo_99x54.png">
@@ -18,15 +18,15 @@
 				<li><a href="#/project/new">Inicia</a></li>
 				<li><a href="#/">Explora</a></li>
 				<li><a href="#/">Blog</a></li>
-				<li id="user-info" ng-controller="UserInfoCtrl">				
-					<div ng-if = "authorized == true">
+				<li id="user-info" ng-switch on="authorized">				
+					<div ng-switch-when="true">
 						<span class="label label-info">
 							<a href="/user" alt="{{ user.fullname }}">{{ user.fullname }}</a>
 						</span>
 						<br>
-						<a href="/entrance/logout">Salir</a>
+						<a href="#/logout()">Salir</a>
 					</div>
-				    <div ng-if = "authorized != true">
+				    <div ng-switch-default>
 				        <a href="#/entrance">Entrar</a>
 				    </div>
 				</li>

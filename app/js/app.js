@@ -28,6 +28,11 @@ mecenasApp.config(['$routeProvider',
 					templateUrl: 'partials/user-log.html', 
 					controller: 'EntranceCtrl' 
 				})
+			.when('/logout',
+				{
+					templateUrl: 'partials/user-log.html',
+					controller: 'EntranceCtrl'
+				})
 			.when('/project/new',
 				{ 
 					templateUrl: 'partials/project-new.html', 
