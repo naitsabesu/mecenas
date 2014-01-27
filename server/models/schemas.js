@@ -36,10 +36,11 @@ var projectSchema = Schema({
 
 	created  : Date, //fecha de creacion
 	updated	 : Date, //fecha de ultima actualizacion
+	acti
 
 	backers  : String, //por ahora es un string pero deberia ser una coleccion de User
 	collected: Number, //8 digitos maximo
-	goal     : Number
+	// goal     : Number
 });
 
 var User = models.model('User', userSchema);

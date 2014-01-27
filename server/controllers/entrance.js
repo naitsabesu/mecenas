@@ -64,8 +64,7 @@ var entranceController = function(server){
 			if(err){
 				res.send(500, {registered : false , err : err });
 			}
-
-			res.send(200, {registered : true});
+			res.send(200, { registered : true });
 		});
 	});
 	
