@@ -28,11 +28,11 @@ var entranceController = function(server){
 
 	//SIGNUP
 	//TODO: Este deberia ir en "controller/user.js"
-	server.post('/entrance/signup', nameExists, function(req, res){
+	server.post('/entrance/register', nameExists, function(req, res){
 		//levantar datos del formulario
-		var fullName = req.body.usr_fullname,
-			email	 = req.body.usr_mail_a,
-			pass	 = req.body.usr_pass_a;
+		var fullName = req.body.fullname,
+			email	 = req.body.email,
+			pass	 = req.body.password;
 
 		//validar datos
 
@@ -62,16 +62,15 @@ var entranceController = function(server){
 
 		user.save(function(err){
 			if(err){
-				res.send(500, err);
+				res.send(500, {registered : false , err : err });
 			}
 
-			//guardo el usuario en sesion y redirecciono a /
-			req.session.user = user;
-			res.redirect('/');
+			res.send(200, {registered : true});
 		});
 	});
 	
 	server.post('/entrance', function(req, res){
+		console.log('POST: /entrance');
 		// lavantar datos
 		var email = req.body.email,
 			pass  = req.body.password,

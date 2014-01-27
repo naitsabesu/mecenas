@@ -8,77 +8,79 @@ mecenasControllers.controller('UserInfoCtrl', ['$scope', '$routeParams','Session
 
 	}]);
 
-
-mecenasControllers.controller('ProjectListCtrl', ['$scope', 'Project', 'SessionService',
-	function($scope, Project, SessionService) {
-		$scope.projects = Project.query();
+mecenasControllers.controller('ProjectListCtrl', ['$scope', 'Project',
+	function($scope, Project) {
+        Project.query('lasts').success(function(resp){
+            $scope.projects = resp;
+        });	
 	}]);
 
 mecenasControllers.controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'Project',
 	function($scope, $routeParams, Project) {
-		$scope.project = Project.get({ projectId : $routeParams.projectId }, function(_project){
-
-		});
+        Project.query($routeParams.projectId).success(function(resp){
+            $scope.project = resp;
+        });
 	}]);
 
 mecenasControllers.controller('ProjectNewCtrl', ['$scope']);
 
 mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', '$routeParams','SessionService', 
 	function($scope, $location, $routeParams, SessionService){
-    	$scope.user = SessionService.getUser();
+        
 
 		//chequea cada vez q la aplicacion cambia de ruta si hubo modificaciones en la sesion
-		$scope.$on('$routeChangeSuccess',function(){
-			$scope.authorized = SessionService.authorized();
+		$scope.$on('$routeChangeStart',function(){
+            $scope.authorized = SessionService.isAuthorized();
 			if($scope.authorized){
 				$scope.user = SessionService.getUser();
 			}else{
 				delete $scope.user;
 			}
 		});
-    	
+
     	$scope.login = function() {
-    		SessionService.login($scope.user, loginHandler, errorHandler);
+    		//SessionService.login($scope.user, loginHandler, errorHandler);
+            SessionService.login(
+                { 
+                    email : 'flores.javier@gmail.com',
+                    password : 'jsfYgyg11'
+                })
+            .success(function(resp){
+                $location.path('/');
+            });
     	};
 
-    	function loginHandler(res) {
-    		if(SessionService.authorized()) {
-    			$location.path('/'); //autorizado
-    		} else {
-    			$scope.message = "Invalid username or password!";
-    		}
-    	}
-
-
-        $scope.logout = function() {
-            SessionService.logout(logoutHandler, errorHandler);
+        $scope.logout = function(){
+            SessionService.logout().success(function(resp){
+                $location.path('/#');
+            });
         };
 
-        function logoutHandler(res) {
-        	debugger;
-        	$location.path('/entrance');
+        $scope.register = function(){
+            debugger;
+            SessionService.register(
+                {
+                    fullname : $scope.newuser.fullname,
+                    email    : $scope.newuser.email_b,
+                    password : $scope.newuser.password_b
+                })
+            .success(function(resp){
+                if(resp.registered === 'true'){
+                    SessionService.login(
+                        {
+                            email: $scope.newuser.email_b,
+                            password: $scope.newuser.password_b
+                        })
+                    .success(function(resp){
+                        $location.path('/');
+                    });
+                }
+                
+            });
         }
-
-    	function errorHandler(err) {
-        	$scope.message = "Error! " + err.data.error;
-    	}
 
 
 
 	}
 ]);
 
-
-
-
-
-// phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
-//   function($scope, $routeParams, Phone) {
-//     $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-//       $scope.mainImageUrl = phone.images[0];
-//     });
-
-//     $scope.setImage = function(imageUrl) {
-//       $scope.mainImageUrl = imageUrl;
-//     }
-//   }]);

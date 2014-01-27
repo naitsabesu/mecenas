@@ -5,13 +5,16 @@
 var mecenasApp = angular.module('mecenasApp', [
 	'ngSanitize',
 	'ngRoute',
+	'ngCookies',
   	'mecenasControllers',
   	'mecenasFilters',
   	'mecenasServices'
 ]);
 
-mecenasApp.config(['$routeProvider',
-	function($routeProvider) {
+mecenasApp.config(['$routeProvider','$locationProvider',
+	function($routeProvider, $locationProvider) {
+		// $locationProvider.html5Mode(true);
+
 		$routeProvider
 			.when('/', 
 				{ 
@@ -27,11 +30,6 @@ mecenasApp.config(['$routeProvider',
 				{	
 					templateUrl: 'partials/user-log.html', 
 					controller: 'EntranceCtrl' 
-				})
-			.when('/logout',
-				{
-					templateUrl: 'partials/user-log.html',
-					controller: 'EntranceCtrl'
 				})
 			.when('/project/new',
 				{ 

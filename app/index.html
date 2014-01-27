@@ -24,7 +24,7 @@
 							<a href="/user" alt="{{ user.fullname }}">{{ user.fullname }}</a>
 						</span>
 						<br>
-						<a href="#/logout()">Salir</a>
+						<button class="btn" ng-click="logout()">Salir</button>
 					</div>
 				    <div ng-switch-default>
 				        <a href="#/entrance">Entrar</a>
@@ -46,6 +46,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>	
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-cookies.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-sanitize.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-cookies.js"></script>
+
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>	
 	<script src="js/services.js"></script>	

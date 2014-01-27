@@ -14,10 +14,12 @@
 						<label for="title">CONTRASEÑA</label>
 						<input type="password" ng-model="user.password" placeholder="Contraseña" required>
 					</li>
+					<!--
 					<li>
 						<input checked="checked" class="checkbox" id="entrance_remember_me" name="entrance_remember_me"  type="checkbox" value="1">		
 						<label class="remember-me" for="entrance_remember_me">No salir de la cuenta</label>
 					</li>
+					-->
 					<li>
 						<button type="submit" class="btn btn-primary" ng-disabled="{{ login-form.$invalid }}">Entrar</button>
 					</li>
@@ -27,32 +29,32 @@
 	</div>
 	<div class="entrance-box entrance-box-primary">
 		<h4>Eres nuevo en Mecenas?</h4>
-		<p>Compartenos algunos datos para registrarte en Mecenas</p><br>
-		<form action="/entrance/signup" method="post">
+		<p>Compartenos algunos datos para registrarte</p><br>
+		<form id="register-form" name="register-form" ng-submit='register()'>
 			<fieldset>
 				<ol>
 					<li>
 						<label for="title">NOMBRE COMPLETO</label>
-						<input type="text" name="usr_fullname" id="usr_fullname" placeholder="Nombre completo">
+						<input type="text" ng-model="newuser.fullname" placeholder="Nombre completo" required>
 					</li>
 					<li>
 						<label for="title">EMAIL</label>
-						<input type="text" name="usr_mail_a" id="usr_mail_a" placeholder="Email">						
+						<input type="text" ng-model="newuser.email" placeholder="Email" required>
 					</li>
 					<li>
 						<label for="title">REINGRESE EL EMAIL</label>
-						<input type="text" name="usr_mail_b" id="usr_mail_b" placeholder="Reingrese el email">
+						<input type="text" ng-model="newuser.email_b" placeholder="Reingrese el email" required>
 					</li>
 					<li>
 						<label for="title">CONTRASEÑA</label>
-						<input type="password" name="usr_pass_a" id="usr_pass_a" placeholder="Contraseña">
+						<input type="password" ng-model="newuser.password" placeholder="Contraseña" required>
 					</li>
 					<li>
 						<label for="title">REINGRESE LA CONTRASEÑA</label>
-						<input type="password" name="usr_pass_b" id="usr_pass_b" placeholder="Reingrese la contraseña">						
+						<input type="password" ng-model="newuser.password_b" placeholder="Reingrese la contraseña" required>
 					</li>
 					<li>
-						<button class="btn btn-primary">Registrarme</button>			
+						<button type="submit" class="btn btn-primary">Mejorar el mundo</button>
 					</li>
 				</ol>
 			</fieldset>
