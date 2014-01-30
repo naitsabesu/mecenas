@@ -18,13 +18,6 @@ var entranceController = function(server){
 		next();
 	}
 
-	//LOGIN/SIGNUP PAGE
-	// server.post('/entrance', function(req,res){
-	// 	var email = req.body.email,
-	// 		pass  = req.body.password,
-	// 		hashedPass = passwordHash.generate(pass);		
-	// 	console.log('GET:'+ email +'-'+ pass +'-'+ hashedPass);
-	// });
 
 	//SIGNUP
 	//TODO: Este deberia ir en "controller/user.js"
@@ -62,7 +55,7 @@ var entranceController = function(server){
 
 		user.save(function(err){
 			if(err){
-				res.send(500, {registered : false , err : err });
+				res.send(500, { registered : false , err : err });
 			}
 			res.send(200, { registered : true });
 		});

@@ -40,10 +40,11 @@ mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', '$routePar
 
     	$scope.login = function() {
     		//SessionService.login($scope.user, loginHandler, errorHandler);
+            // debugger;
             SessionService.login(
                 { 
-                    email : 'flores.javier@gmail.com',
-                    password : 'jsfYgyg11'
+                    email : $scope.user.email,
+                    password : $scope.user.password
                 })
             .success(function(resp){
                 $location.path('/');
@@ -57,7 +58,6 @@ mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', '$routePar
         };
 
         $scope.register = function(){
-            debugger;
             SessionService.register(
                 {
                     fullname : $scope.newuser.fullname,
@@ -65,7 +65,7 @@ mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', '$routePar
                     password : $scope.newuser.password_b
                 })
             .success(function(resp){
-                if(resp.registered === 'true'){
+                if(resp.registered){
                     SessionService.login(
                         {
                             email: $scope.newuser.email_b,
