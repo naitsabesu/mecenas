@@ -19,6 +19,7 @@ mecenasControllers.controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'P
 
 mecenasControllers.controller('ProjectNewCtrl', ['$scope', '$location', '$upload', 'Project', 
     function($scope, $location, $upload, Project){
+        $scope.selectedFiles = [];
         $scope.onFileSelect = function($files){
             for (var i = 0; i < $files.length; i++) {
                 var file = $files[i];
@@ -28,7 +29,7 @@ mecenasControllers.controller('ProjectNewCtrl', ['$scope', '$location', '$upload
                     // method: POST or PUT,
                     // headers: {'headerKey': 'headerValue'},
                     // withCredential: true,
-                    data: {myObj: $scope.myModelObj},
+                    // data: { myObj: $scope.myModelObj },
                     file: file,
                     // file: $files, //upload multiple files, this feature only works in HTML5 FromData browsers
                     /* set file formData name for 'Content-Desposition' header. Default: 'file' */
@@ -40,6 +41,9 @@ mecenasControllers.controller('ProjectNewCtrl', ['$scope', '$location', '$upload
                 }).success(function(data, status, headers, config) {
                     // file is uploaded successfully
                     console.log(data);
+                    $scope.selectedFiles.push(data);
+                    $scope.newproject.fileupload = '';
+                    // debugger;
                 });
             }
         },
@@ -51,7 +55,7 @@ mecenasControllers.controller('ProjectNewCtrl', ['$scope', '$location', '$upload
                     brief : $scope.newproject.brief,
                     content : $scope.newproject.content,
                     goal  : $scope.newproject.goal,
-                    files : $scope.newproject.image
+                    files : $scope.selectedFiles
                 }
             )
             .success(function(resp){

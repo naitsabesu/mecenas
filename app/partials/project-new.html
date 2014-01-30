@@ -1,7 +1,7 @@
 <div id="content" class="content project-content">
 	<legend>Nuevo proyecto</legend>
 	<form id="newproject-form" ng-submit="createproject()" enctype="multipart/form-data">
-		<input type="text" ng-model="myModelObj">
+
 		<ol>
 			<li>
 				<label for="title">TITULO</label>
@@ -9,8 +9,13 @@
 			</li>
 			<li>
 				<label for="title">MUESTRANOS LA IMAGEN PRINCIPAL DE TU PROYECTO</label>
-<!-- 				<input type="file" ng-model="newproject.image"> -->
-				 <input type="file" ng-file-select="onFileSelect($files)" >
+				<input type="file" ng-model="newproject.fileupload" ng-file-select="onFileSelect($files)" >
+				<div ng-show="selectedFiles != null">
+					<div ng-repeat="f in selectedFiles">
+						<img style="width:30px;" ng-src="./img/user_images/temp/{{ f.tmpname }}">
+						<span>{{ f.originalname }}</span>
+					</div>
+				</div>				 
 			</li>
 			<li>
 				<label for="brief">RESUMEN</label>

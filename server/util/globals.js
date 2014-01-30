@@ -1,4 +1,5 @@
-exports.__USER_IMAGES__ = './public/img/user_images/';
+exports.__USER_TEMP_IMAGES__ = '../app/img/user_images/temp/';
+exports.__USER_IMAGES__ = '../app/img/user_images/';
 
 //MENSAJES
 exports._MSG_NOT_LOGGEDIN = 'Tienes que estar logueado para realizar esta accion!';
