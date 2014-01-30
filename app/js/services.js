@@ -10,6 +10,17 @@ mecenasServices.factory('Project',
 		return {
 			query : function(projectID){
 				return $http.get('/projects/'+ projectID);
+			},
+			create : function(inputs){
+				return $http(
+				{
+					method : 'POST',
+					url : '/projects', 
+					headers : { 'Content-Type' : 'multipart/form-data'},
+					data :  inputs,
+					transformRequest : formDataObject
+				})
+				.success(function(resp){});
 			}
 		};
 });

@@ -3,11 +3,6 @@
 /* Controllers */
 var mecenasControllers = angular.module('mecenasControllers', []);
 
-mecenasControllers.controller('UserInfoCtrl', ['$scope', '$routeParams','SessionService',
-	function($scope, $routeParams, SessionService) {
-
-	}]);
-
 mecenasControllers.controller('ProjectListCtrl', ['$scope', 'Project',
 	function($scope, Project) {
         Project.query('lasts').success(function(resp){
@@ -22,7 +17,50 @@ mecenasControllers.controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'P
         });
 	}]);
 
-mecenasControllers.controller('ProjectNewCtrl', ['$scope']);
+mecenasControllers.controller('ProjectNewCtrl', ['$scope', '$location', '$upload', 'Project', 
+    function($scope, $location, $upload, Project){
+        $scope.onFileSelect = function($files){
+            for (var i = 0; i < $files.length; i++) {
+                var file = $files[i];
+                $scope.upload = $upload.upload({
+                    url: '/fileupload', 
+                    //upload.php script, node.js route, or servlet url
+                    // method: POST or PUT,
+                    // headers: {'headerKey': 'headerValue'},
+                    // withCredential: true,
+                    data: {myObj: $scope.myModelObj},
+                    file: file,
+                    // file: $files, //upload multiple files, this feature only works in HTML5 FromData browsers
+                    /* set file formData name for 'Content-Desposition' header. Default: 'file' */
+                    //fileFormDataName: myFile, //OR for HTML5 multiple upload only a list: ['name1', 'name2', ...]
+                    /* customize how data is added to formData. See #40#issuecomment-28612000 for example */
+                    //formDataAppender: function(formData, key, val){} 
+                }).progress(function(evt) {
+                    console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+                }).success(function(data, status, headers, config) {
+                    // file is uploaded successfully
+                    console.log(data);
+                });
+            }
+        },
+        $scope.createproject = function(){
+            debugger;
+            Project.create(
+                {
+                    title : $scope.newproject.title,
+                    brief : $scope.newproject.brief,
+                    content : $scope.newproject.content,
+                    goal  : $scope.newproject.goal,
+                    files : $scope.newproject.image
+                }
+            )
+            .success(function(resp){
+                $location.path('/');
+            });
+        };
+
+    }
+]);
 
 mecenasControllers.controller('EntranceCtrl', ['$scope', '$location', '$routeParams','SessionService', 
 	function($scope, $location, $routeParams, SessionService){

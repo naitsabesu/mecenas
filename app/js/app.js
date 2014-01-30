@@ -8,7 +8,8 @@ var mecenasApp = angular.module('mecenasApp', [
 	'ngCookies',
   	'mecenasControllers',
   	'mecenasFilters',
-  	'mecenasServices'
+  	'mecenasServices',
+  	'angularFileUpload'
 ]);
 
 mecenasApp.config(['$routeProvider','$locationProvider',
@@ -31,10 +32,10 @@ mecenasApp.config(['$routeProvider','$locationProvider',
 					templateUrl: 'partials/user-log.html', 
 					controller: 'EntranceCtrl' 
 				})
-			.when('/project/new',
+			.when('/project/create',
 				{ 
 					templateUrl: 'partials/project-new.html', 
-					controller: 'ProjectCtrl'	
+					controller: 'ProjectNewCtrl'	
 				})
 			.otherwise(
 				{

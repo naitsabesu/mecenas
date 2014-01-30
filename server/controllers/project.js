@@ -1,3 +1,9 @@
+// Create -> Post
+// Read   -> Get
+// Update -> Put
+// Delete -> Delete
+
+
 var _ = require('underscore'); //manejo de arreglos entre otras funcionalidades
 var Project = require('../models/schemas').Project;
 var UploadFile = require('../util/upload');
@@ -67,24 +73,17 @@ var projectController = function(server){
 
 	});
 
-	server.post('/project/create', isNotLoggedIn, function(req, res){
+	server.post('/projects', function(req, res){
 		var createdDate = new Date(Globals.getDateNow());
-		
-		//sube archivo
 		debugger;
-		var fileNameToSave;
-		if((req.files.name !== '')&&(req.files.size !== 0)){
-			fileNameToSave = UploadFile.upload(req, res);
-		}
-
 		var projectPost = new Project({
 			creator : req.session.user._id,    //por ahora es un string pero deberia ser un objeto User
 			title	: req.body.title,
 			brief	: req.body.brief,
-			content : req.body.project-content,
+			content : req.body.content,
 
-			mainImage : fileNameToSave, //TODO: subir una imagen al servidor o a S3 
-			goal	: req.body.pledge,			
+			//mainImage : fileNameToSave, //TODO: subir una imagen al servidor o a S3 
+			goal	: req.body.goal,			
 			
 			// location : 'string', //relacionado a google maps
 			created  : createdDate, //fecha de creacion
@@ -96,10 +95,19 @@ var projectController = function(server){
 
 		projectPost.save(function(err){
 			if(err){
-				res.send(500, err);
+				res.send(500, { created : false, err : err });
 			}
-			res.redirect('/');
+			res.send(200, { created : true });
 		});
+	});
+
+	server.post('/fileupload', function(req, res){
+		debugger;
+		//sube archivo
+		var fileNameToSave;
+		if((req.files.name !== '')&&(req.files.size !== 0)){
+			fileNameToSave = UploadFile.upload(req, res);
+		}
 	});
 
 };
