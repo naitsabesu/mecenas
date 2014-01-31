@@ -1,4 +1,3 @@
-exports.__USER_TEMP_IMAGES__ = '../app/img/user_images/temp/';
 exports.__USER_IMAGES__ = '../app/img/user_images/';
 
 //MENSAJES

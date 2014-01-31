@@ -2,12 +2,12 @@ var fs   = require('fs'),
     guid = require('node-uuid'),
     globals = require('./globals');
 
-var upload = function(req, res){
+exports.upload = function(req, res){
     // console.log(req.files);
     var tmp_path = req.files.file.path;   
   
     // Comprobamos que el fichero es de tipo imagen
-    if (req.files.file.type.indexOf('image')==-1){
+    if (req.files.file.type.indexOf('image') == -1){
     	res.send('El fichero que deseas subir no es una imagen');
     }
     var guidName = getGuidName(req.files.file.type);
@@ -15,22 +15,31 @@ var upload = function(req, res){
         res.send('El fichero que deseas subir no es de un formato compatible');
     }
     // Ruta donde colocaremos las imagenes
-    var target_path = globals.__USER_TEMP_IMAGES__ + guidName; //req.files.image.name;
+    var target_path = globals.__USER_IMAGES__ +'temp/'+ guidName; //req.files.image.name;
 
     // Movemos el fichero temporal tmp_path al directorio que hemos elegido en target_path
     fs.rename(tmp_path, target_path, function(err) {
-        if (err){
-            return { uploaded : false , err : err };
-        }
-        
+        if(err) throw err;
+    
         // Eliminamos el fichero temporal
         fs.unlink(tmp_path, function() {
-            return { uploaded : false , err : err };
+            if(err) throw err;
         });
     });
-    return { uploaded : true , tmpname : guidName , originalname : req.files.file.name };
+    return guidName;    
 };
 
+exports.moveFile = function(req, filename){
+    var target_dir = globals.__USER_IMAGES__ + req.session.user.email +'/';  
+    fs.exists(target_dir, function (exists) {
+        if(!exists)fs.mkdir(target_dir);
+    });
+
+    var target_path = target_dir + filename;
+    fs.rename(globals.__USER_IMAGES__ +'temp/' + filename, target_path, function(err) {
+        if (err) throw err;
+    });
+};
 
 var getGuidName = function(fileType){
     var guidName = guid.v1(),
@@ -45,4 +54,3 @@ var getGuidName = function(fileType){
     return;
 };
 
-exports.upload = upload;

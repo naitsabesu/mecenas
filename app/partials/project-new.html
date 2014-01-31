@@ -9,13 +9,10 @@
 			</li>
 			<li>
 				<label for="title">MUESTRANOS LA IMAGEN PRINCIPAL DE TU PROYECTO</label>
-				<input type="file" ng-model="newproject.fileupload" ng-file-select="onFileSelect($files)" >
-				<div ng-show="selectedFiles != null">
-					<div ng-repeat="f in selectedFiles">
-						<img style="width:30px;" ng-src="./img/user_images/temp/{{ f.tmpname }}">
-						<span>{{ f.originalname }}</span>
-					</div>
+				<div ng-show="selectedFile != null">
+					<img style="width:100px;" ng-src="./img/user_images/temp/{{ selectedFile }}">
 				</div>				 
+				<input type="file" ng-model="newproject.fileupload" ng-file-select="onFileSelect($files)" >				
 			</li>
 			<li>
 				<label for="brief">RESUMEN</label>

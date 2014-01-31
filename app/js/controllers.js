@@ -19,21 +19,13 @@ mecenasControllers.controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'P
 
 mecenasControllers.controller('ProjectNewCtrl', ['$scope', '$location', '$upload', 'Project', 
     function($scope, $location, $upload, Project){
-        $scope.selectedFiles = [];
+        $scope.selectedFile = null;
         $scope.onFileSelect = function($files){
             for (var i = 0; i < $files.length; i++) {
                 var file = $files[i];
                 $scope.upload = $upload.upload({
                     url: '/fileupload', 
-                    //upload.php script, node.js route, or servlet url
-                    // method: POST or PUT,
-                    // headers: {'headerKey': 'headerValue'},
-                    // withCredential: true,
-                    // data: { myObj: $scope.myModelObj },
                     file: file,
-                    // file: $files, //upload multiple files, this feature only works in HTML5 FromData browsers
-                    /* set file formData name for 'Content-Desposition' header. Default: 'file' */
-                    //fileFormDataName: myFile, //OR for HTML5 multiple upload only a list: ['name1', 'name2', ...]
                     /* customize how data is added to formData. See #40#issuecomment-28612000 for example */
                     //formDataAppender: function(formData, key, val){} 
                 }).progress(function(evt) {
@@ -41,7 +33,7 @@ mecenasControllers.controller('ProjectNewCtrl', ['$scope', '$location', '$upload
                 }).success(function(data, status, headers, config) {
                     // file is uploaded successfully
                     console.log(data);
-                    $scope.selectedFiles.push(data);
+                    $scope.selectedFile = data;
                     $scope.newproject.fileupload = '';
                     // debugger;
                 });
@@ -55,7 +47,7 @@ mecenasControllers.controller('ProjectNewCtrl', ['$scope', '$location', '$upload
                     brief : $scope.newproject.brief,
                     content : $scope.newproject.content,
                     goal  : $scope.newproject.goal,
-                    files : $scope.selectedFiles
+                    file : $scope.selectedFile
                 }
             )
             .success(function(resp){

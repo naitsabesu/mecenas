@@ -6,10 +6,9 @@
 
 var _ = require('underscore'); //manejo de arreglos entre otras funcionalidades
 var Project = require('../models/schemas').Project;
-var UploadFile = require('../util/upload');
+var Files = require('../util/upload');
 var Globals = require('../util/globals');
 var ObjectId = require('mongoose').Types.ObjectId;
-var fs   = require('fs');
 
 
 var projectController = function(server){
@@ -70,15 +69,13 @@ var projectController = function(server){
 
 	server.post('/projects', isNotLoggedIn, function(req, res){
 		var createdDate = new Date(Globals.getDateNow());
-		var mainImageFile;
-		if(req.body.files.length >0 ) mainImageFile = req.body.files[0].tmpname;
 		var projectPost = new Project({
 			creator : req.session.user._id,    //por ahora es un string pero deberia ser un objeto User
 			title	: req.body.title,
 			brief	: req.body.brief,
 			content : req.body.content,
 
-			mainImage : mainImageFile, //TODO: subir una imagen al servidor o a S3 
+			mainImage : req.body.file, //TODO: subir una imagen al servidor o a S3 
 			goal	: req.body.goal,			
 			
 			// location : 'string', //relacionado a google maps
@@ -94,10 +91,9 @@ var projectController = function(server){
 				res.send(500, { created : false, err : err });
 			}
 			//mover imagen
-			if(mainImageFile !== ''){
-				fs.rename(Globals.__USER_TEMP_IMAGES__ + mainImageFile, 
-							Globals.__USER_IMAGES__ + req.session.user.email +'/'+ mainImageFile);
-			}
+			// if(req.body.file !== ''){
+			// 	Files.moveFile(req, req.body.file)
+			// }
 			
 			res.send(200, { created : true });
 		});
@@ -107,7 +103,7 @@ var projectController = function(server){
 		//sube archivo
 		var fileNameToSave, resp;
 		if((req.files.file.name !== '')&&(req.files.file.size !== 0)){
-			resp = UploadFile.upload(req, res);
+			resp = Files.upload(req, res);
 			res.send(200, resp);
 		}
 
