@@ -6,6 +6,6 @@
 data/
 server/node_modules/
 app/img/user_images/*.*
-
+app/img/user_images/temp/*.*
 docs/
 bkp/
